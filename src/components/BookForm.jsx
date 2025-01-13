@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const INITIAL_BOOK_STATE = {
   titolo: "",
   immagine: "",
@@ -22,7 +24,7 @@ const AVAILABLE_TAGS = [
 // Custom hooks
 function useBookForm(onSubmit) {
   const [bookData, setBookData] = useState(INITIAL_BOOK_STATE);
-
+  const navigate = useNavigate();
   // Handle input changes
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -50,8 +52,10 @@ function useBookForm(onSubmit) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (bookData.pubblica) {
-      await onSubmit(bookData);
-      setBookData(INITIAL_BOOK_STATE);
+		const createdBook = await onSubmit(bookData);
+ 	    setBookData(INITIAL_BOOK_STATE);
+		 console.log("createdBook", createdBook);
+		 navigate(`/PostList/${createdBook.id}`);
     }
   };
 

@@ -1,4 +1,4 @@
-import { BookForm } from "./BookForm";
+import { BookForm } from "../components/BookForm";
 import { useBooks } from "../hooks/useBooks";
 
 export function HomePage() {

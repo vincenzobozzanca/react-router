@@ -1,4 +1,3 @@
-import styles from "./Card.module.css";
 
 export function Card({
   titolo = "",
@@ -12,26 +11,23 @@ export function Card({
   let arraySpanTags =[];
   // Devo fare un map di questo array tags craendo un array di span
   if (arrayTags) {
-   arraySpanTags = arrayTags.map((currTag, currIndex) => (
-      <span key={currIndex}>{currTag}</span>
-    ));
+	arraySpanTags = arrayTags.map((currTag, currIndex) => (
+		<span key={currIndex}>{currTag}</span>
+	  ));
+	}
   }
   return (
-    <div className={`card ${styles.card}`}>
-      <h2 className={styles.title}>{titolo}</h2>
-      <img src={immagine} alt="" className={styles.image} />
-      <p className={styles.content}>{contenuto}</p>
-      <h4 className={styles.category}>{categoria}</h4>
-      <div className={styles.tags}>
-        {arraySpanTags && arraySpanTags.map((tag) => (
-          <span className={styles.tag}>{tag}</span>
-        ))}
+    <div>
+      <h2>{titolo}</h2>
+      <img src={immagine} alt="" />
+      <p>{contenuto}</p>
+      <h4>{categoria}</h4>
+      <div>
+        {arraySpanTags && arraySpanTags.map((tag) => <span>{tag}</span>)}
+     
       </div>
       <div>
-        <button onClick={callbackCestina} className={styles.button}>
-          Cestina
-        </button>
+	  	<button onClick={callbackCestina}>Cestina</button>
       </div>
     </div>
   );
-}

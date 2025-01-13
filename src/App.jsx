@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { HomePage } from "./components/HomePage";
-import { ChiSiamo } from "./components/ChiSiamo";
-import { PostList } from "./components/PostList";
-import Dashboard from "./components/Dashboard";
+import { HomePage } from "./pages/HomePage";
+import { ChiSiamo } from "./pages/ChiSiamo";
+import { PostList } from "./pages/PostList";
+import { PostDetail } from "./pages/PostDetail";
+import Dashboard from "./pages/Dashboard";
 
 // Main App Component App
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/ChiSiamo" element={<ChiSiamo />} />
             <Route path="/PostList" element={<PostList />} />
+			<Route path="/PostList/:id" element={<PostDetail />}/>
           </Route>
         </Routes>
       </Router>
